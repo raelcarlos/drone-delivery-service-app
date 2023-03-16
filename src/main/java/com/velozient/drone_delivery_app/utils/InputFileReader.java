@@ -15,7 +15,6 @@ import com.velozient.drone_delivery_app.model.Location;
 
 public class InputFileReader {
 	
-	// ver o que ainda da pra melhorar nessa classe
 	private List<String> fileLines;
 	
 	public InputFileReader(String filePath) throws IOException {

@@ -25,11 +25,9 @@ public class TripManagerService {
 	}
 	
 	public Map<String, List<Trip>> generateTrips() {
-		
 		while (!getLocations().isEmpty()) {
 			for (Drone drone :  getDrones()) {
 				List<Location> droneLocations = new ArrayList<>();
-				
 				for (int i = getLocations().size() - 1; i >= 0; i-- ) {
 					Double deliveryWeight = getLocations().get(i).getDeliveryWeight();
 					Double droneAvailableLoad = getAvailableLoad(drone.getMaximumWeight(), droneLocations);
