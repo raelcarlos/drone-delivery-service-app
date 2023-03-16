@@ -27,28 +27,33 @@ public class OutputFileGenerator {
         	br.write("[" + droneName + "]");
         	br.newLine();
         	
-        	for (Iterator<Trip> droneTripsIterator = droneTrips.iterator(); droneTripsIterator.hasNext(); ) {
-        		Trip trip = droneTripsIterator.next();
-        		br.write("Trip #" + tripNumber);
-        		br.newLine();
-        		for (Iterator<Location> tripLocationsIterator = trip.getLocations().iterator(); tripLocationsIterator.hasNext();) {
-        			Location location = tripLocationsIterator.next();
-        			br.write("[" + location.getName() + "]");
-        			if (tripLocationsIterator.hasNext()) {
-        				br.write(",");
-        			}
-        		}
-        		tripNumber++;
-        		if (droneTripsIterator.hasNext()) {
-        			br.newLine();
-        		}
-        	}
+        	writeDroneTrips(br, droneTrips, tripNumber);
+        	
         	if (tripsByDroneIterator.hasNext()) {
         		br.newLine();
         		br.newLine();
         	}
         }
         br.close();
+	}
+
+	private static void writeDroneTrips(BufferedWriter br, List<Trip> droneTrips, int tripNumber) throws IOException {
+		for (Iterator<Trip> droneTripsIterator = droneTrips.iterator(); droneTripsIterator.hasNext(); ) {
+			Trip trip = droneTripsIterator.next();
+			br.write("Trip #" + tripNumber);
+			br.newLine();
+			for (Iterator<Location> tripLocationsIterator = trip.getLocations().iterator(); tripLocationsIterator.hasNext();) {
+				Location location = tripLocationsIterator.next();
+				br.write("[" + location.getName() + "]");
+				if (tripLocationsIterator.hasNext()) {
+					br.write(",");
+				}
+			}
+			tripNumber++;
+			if (droneTripsIterator.hasNext()) {
+				br.newLine();
+			}
+		}
 	}
 
 }
